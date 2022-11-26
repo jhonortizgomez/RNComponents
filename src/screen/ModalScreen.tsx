@@ -1,12 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import {View, Button, Modal, Text} from 'react-native';
-import React from 'react';
-import {HeaderTittle} from '../components/HeaderTittle';
-import {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
+import {HeaderTittle} from '../components/HeaderTittle';
+import {ThemeContext} from '../context/theme/ThemeContext';
 export const ModalScreen = () => {
   const [isvisible, setIsvisible] = useState(false);
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   return (
     <View>
       <HeaderTittle title="Modal screen" />
@@ -17,13 +20,13 @@ export const ModalScreen = () => {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.4)',
+            backgroundColor: colors.card,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
           <View
             style={{
-              backgroundColor: 'white',
+              backgroundColor: colors.card,
               width: 200,
               height: 200,
               justifyContent: 'center',
