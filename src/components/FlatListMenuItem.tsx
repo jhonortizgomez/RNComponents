@@ -1,10 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/core';
+// import {useTheme} from '@react-navigation/native';
 
 import {MenuItem} from '../interfaces/appInterfaces';
+import {ThemeContext} from '../context/theme/ThemeContext';
 
 interface Props {
   menuItem: MenuItem;
@@ -12,20 +14,25 @@ interface Props {
 
 export const FlatListMenuItem = ({menuItem}: Props) => {
   const navigation = useNavigation();
+  const {theme} = useContext(ThemeContext);
 
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={() => navigation.navigate(menuItem.component as any)}>
       <View style={styles.container}>
-        <Icon name={menuItem.icon} color="gray" size={23} />
-        <Text style={styles.itemText}>
+        <Icon name={menuItem.icon} color={theme.colors.primary} size={23} />
+        <Text style={{...styles.itemText, color: theme.colors.text}}>
           {menuItem.name} {menuItem.icon}
         </Text>
 
         <View style={{flex: 1}} />
 
-        <Icon name="caret-forward-outline" color="purple" size={23} />
+        <Icon
+          name="caret-forward-outline"
+          color={theme.colors.primary}
+          size={23}
+        />
       </View>
     </TouchableOpacity>
   );

@@ -46,4 +46,14 @@ export const menuItems: MenuItem[] = [
     icon: 'refresh-outline',
     component: 'InfiniteScrollScreen',
   },
+  {
+    name: 'Slides',
+    icon: 'refresh-outline',
+    component: 'SlidesScreen',
+  },
+  {
+    name: 'Theme',
+    icon: 'flask-outline',
+    component: 'ChangeThemeScreen',
+  },
 ];
